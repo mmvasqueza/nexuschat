@@ -1,0 +1,58 @@
+/** Acordeón premium con apertura animada */
+.faq {
+  display: grid;
+  gap: 14px;
+
+  &__item {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+
+    &--open { border-color: var(--gold-500); }
+  }
+
+  &__question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 22px;
+    background: none;
+    border: 0;
+    text-align: left;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy-900);
+    cursor: pointer;
+
+    svg { flex: none; color: var(--gold-600); transition: transform 0.25s ease; }
+
+    /* El + gira 45deg cuando está abierto, convirtiéndose en × */
+    .faq__item--open & svg { transform: rotate(45deg); }
+  }
+
+  /* Truco grid: 0fr -> 1fr anima la altura sin medir el contenido */
+  &__answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+
+    p {
+      overflow: hidden;
+      margin: 0;
+      padding: 0 22px;
+      color: var(--ink-soft);
+      font-size: 15px;
+    }
+
+    .faq__item--open & {
+      grid-template-rows: 1fr;
+
+      p { padding-bottom: 20px; }
+    }
+  }
+}

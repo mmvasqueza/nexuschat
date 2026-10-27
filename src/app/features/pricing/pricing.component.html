@@ -1,0 +1,191 @@
+<!--
+  PRECIOS Y PLANES
+  - Las tarjetas leen el catálogo del PricingService (fuente única).
+  - La calculadora muta signals del servicio; quote() se recalcula solo.
+-->
+<section class="pricing-hero">
+  <div class="container" appReveal>
+    <h1>Elige el plan de NexusChat más adecuado para ti</h1>
+    <p class="pricing-hero__note">− Sin tarjeta de crédito para comenzar −</p>
+  </div>
+</section>
+
+<!-- ============ TARJETAS DE PLANES ============ -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="grid grid--3 plans">
+      @for (plan of pricing.plans; track plan.id) {
+        <article class="card plan-card" [class.plan-card--highlight]="plan.highlighted" appReveal>
+          @if (plan.highlighted) {
+            <span class="plan-card__flag">Más popular</span>
+          }
+          <h2>{{ plan.name }}</h2>
+
+          <p class="plan-card__price">
+            @if (plan.pricePerAgent > 0) {
+              <strong>${{ plan.pricePerAgent }}</strong>
+              <span>/ mes / agente</span>
+            } @else {
+              <strong>A medida</strong>
+              <span>según tus necesidades</span>
+            }
+          </p>
+
+          <p class="plan-card__tagline">{{ plan.tagline }}</p>
+
+          <ul class="plan-card__features">
+            @for (f of plan.features; track f) {
+              <li>{{ f }}</li>
+            }
+          </ul>
+
+          @if (plan.notes) {
+            <p class="plan-card__notes">{{ plan.notes }}</p>
+          }
+
+          @if (plan.pricePerAgent > 0) {
+            <!-- Los planes con precio navegan al checkout con pasarela -->
+            <a class="btn" [class.btn--primary]="plan.highlighted" [class.btn--outline]="!plan.highlighted"
+               [routerLink]="['/es/checkout', plan.id]">
+              Elegir {{ plan.name }}
+            </a>
+          } @else {
+            <!-- Enterprise no se paga online: se agenda demo comercial -->
+            <a class="btn btn--outline" routerLink="/es/demo">Hablar con ventas</a>
+          }
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXTRAS / MÓDULOS ADICIONALES ============ -->
+<section class="section section--tinted">
+  <div class="container">
+    <header class="section__head" appReveal>
+      <span class="eyebrow">Módulos adicionales</span>
+      <h2>Personaliza tu plan con extras</h2>
+    </header>
+
+    <div class="grid grid--3">
+      @for (addon of pricing.addons; track addon.id) {
+        <article class="card addon-card" appReveal>
+          <h3>{{ addon.name }}</h3>
+          <p class="addon-card__price">
+            @if (addon.unitPrice) {
+              <strong>${{ addon.unitPrice }}</strong> {{ addon.unitLabel }}
+            } @else {
+              <strong>${{ addon.monthlyPrice }}</strong> / mes
+            }
+          </p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ============ CALCULADORA DE COTIZACIÓN ============ -->
+<section class="section">
+  <div class="container calculator" appReveal>
+    <header class="section__head">
+      <span class="eyebrow">Cotizador</span>
+      <h2>Personaliza tu plan</h2>
+      <p class="section__sub">Elige el número de agentes y canales, y calcula tu plan personalizado.</p>
+    </header>
+
+    <div class="calculator__grid">
+      <!-- Controles -->
+      <div class="calculator__controls">
+        <!-- Stepper de agentes -->
+        <div class="control">
+          <label id="agents-label">Número de agentes</label>
+          <div class="stepper">
+            <button type="button" (click)="pricing.setAgents(pricing.agents() - 1)"
+                    aria-label="Quitar un agente">−</button>
+            <output aria-labelledby="agents-label">{{ pricing.agents() }}</output>
+            <button type="button" (click)="pricing.setAgents(pricing.agents() + 1)"
+                    aria-label="Añadir un agente">+</button>
+          </div>
+        </div>
+
+        <!-- Canales (toggle) -->
+        <fieldset class="control">
+          <legend>Canales a conectar</legend>
+          @for (ch of channelOptions; track ch.id) {
+            <label class="toggle">
+              <input type="checkbox" [checked]="pricing.channels()[ch.id]"
+                     (change)="pricing.toggleChannel(ch.id)" />
+              <span class="toggle__track" aria-hidden="true"></span>
+              <span class="toggle__label">
+                {{ ch.label }}
+                @if (ch.price > 0) { <em>+${{ ch.price }}/mes en créditos</em> }
+                @else { <em>incluido</em> }
+              </span>
+            </label>
+          }
+        </fieldset>
+
+        <!-- Soporte adicional / extras -->
+        <fieldset class="control">
+          <legend>¿Necesitas soporte adicional?</legend>
+          @for (addon of pricing.addons; track addon.id) {
+            @if (addon.monthlyPrice > 0) {
+              <label class="toggle">
+                <input type="checkbox" [checked]="pricing.selectedAddons().has(addon.id)"
+                       (change)="pricing.toggleAddon(addon.id)" />
+                <span class="toggle__track" aria-hidden="true"></span>
+                <span class="toggle__label">
+                  {{ addon.name }} <em>+${{ addon.monthlyPrice }}/mes</em>
+                </span>
+              </label>
+            }
+          }
+        </fieldset>
+      </div>
+
+      <!-- Resumen (computed: se actualiza al instante) -->
+      <aside class="calculator__summary" aria-live="polite">
+        <h3>Tu cotización mensual</h3>
+        <p class="calculator__total">${{ pricing.quote().monthlyTotal }}</p>
+        @if (pricing.quote().consumableCredits > 0) {
+          <p class="calculator__credits">
+            + ${{ pricing.quote().consumableCredits }} en créditos consumibles
+          </p>
+        }
+        <ul class="calculator__breakdown">
+          @for (line of pricing.quote().breakdown; track line) {
+            <li>{{ line }}</li>
+          }
+        </ul>
+        <p class="calculator__min">Mínimo {{ pricing.rules.minMonths }} meses requeridos</p>
+        <a class="btn btn--primary btn--block"
+           [routerLink]="['/es/checkout', 'plus']">
+          Continuar al pago
+        </a>
+        <a class="btn btn--outline btn--block" routerLink="/es/demo">
+          Prefiero una demo
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ COMERCIAL ============ -->
+<section class="section section--tinted">
+  <div class="container container--narrow">
+    <header class="section__head" appReveal>
+      <span class="eyebrow">Dudas sobre precios</span>
+      <h2>Preguntas sobre los planes</h2>
+    </header>
+    <app-faq-accordion [items]="faqItems" />
+  </div>
+</section>
+
+<!-- ============ CTA DEMO ============ -->
+<section class="section demo-cta">
+  <div class="container" appReveal>
+    <h2>¿Prefieres que te lo enseñemos?</h2>
+    <p>Nuestro equipo está en Europa y América Latina, en tu franja horaria.</p>
+    <a class="btn btn--primary" routerLink="/es/demo">Programa una demo</a>
+  </div>
+</section>

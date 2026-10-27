@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <!--
+    Proyecto backend mínimo para procesar pagos de NexusChat.
+    .NET 8 + Minimal API + Stripe.net
+    Aporte: expone 2 endpoints consumidos por el frontend Angular:
+      - POST /api/payments/checkout  (lo llama PaymentService.pay())
+      - POST /api/payments/webhook   (lo llama Stripe para confirmar cobros)
+  -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- SDK oficial de Stripe para .NET -->
+    <PackageReference Include="Stripe.net" Version="53.0.0" />
+
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.*" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.*" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="8.*" />
+  </ItemGroup>
+
+</Project>

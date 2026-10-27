@@ -1,0 +1,18 @@
+<!--
+  PLANTILLA RAÍZ
+  --------------
+  Estructura persistente: el navbar recibe routerLinkActive de cada ruta,
+  router-outlet es reemplazado por el componente de la página activa y
+  el footer cierra el layout. El floating-cta es fijo (fuera del flujo).
+-->
+<app-navbar />
+
+<main id="main-content">
+  <!-- Aquí el Router monta la página correspondiente a la URL -->
+  <router-outlet />
+</main>
+
+<app-footer />
+
+<!-- Botón flotante de conversación (presente en todas las páginas) -->
+<app-floating-cta />

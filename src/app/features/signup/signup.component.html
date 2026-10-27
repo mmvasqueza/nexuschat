@@ -1,0 +1,129 @@
+<!--
+  CREA UNA CUENTA GRATUITA
+  Layout de dos columnas: formulario (izquierda) + beneficios/apps (derecha),
+  réplica del flujo de registro del sitio de referencia con estética premium.
+-->
+<section class="signup">
+  <div class="container signup__grid">
+    <!-- ============ COLUMNA FORMULARIO ============ -->
+    <div class="signup__form-col">
+      <a class="signup__back" routerLink="/es">← Volver al inicio</a>
+
+      <h1>Crea tu cuenta gratis</h1>
+      <p class="signup__sub">Recibirás un correo electrónico para completar la configuración en pocos segundos</p>
+
+      @if (success()) {
+        <!-- Estado de éxito: email de activación enviado -->
+        <div class="signup__success" role="status">
+          <strong>✓ ¡Casi listo!</strong>
+          <p>{{ success() }}</p>
+          <a class="btn btn--primary" routerLink="/es/iniciar-sesion">Ir a iniciar sesión</a>
+        </div>
+      } @else {
+        <!-- Botones sociales (arriba, como en el flujo original) -->
+        <div class="signup__social">
+          <button type="button" class="btn btn--outline btn--block" (click)="socialSignup('google')">
+            <span aria-hidden="true">G</span> Continuar con Google
+          </button>
+          <button type="button" class="btn btn--outline btn--block" (click)="socialSignup('microsoft')">
+            <span aria-hidden="true">⊞</span> Continuar con Microsoft
+          </button>
+        </div>
+
+        <p class="signup__divider"><span>o</span></p>
+
+        <!-- Formulario reactivo con validación en vivo -->
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+          <div class="field">
+            <label for="workEmail">Correo de trabajo</label>
+            <input id="workEmail" type="email" formControlName="workEmail"
+                   placeholder="nombre@tuempresa.com" autocomplete="email"
+                   [attr.aria-invalid]="form.controls.workEmail.invalid && form.controls.workEmail.touched"
+                   aria-describedby="workEmail-error" />
+            @if (form.controls.workEmail.touched && form.controls.workEmail.invalid) {
+              <small id="workEmail-error" class="field__error">
+                @if (form.controls.workEmail.hasError('required')) { El correo es obligatorio. }
+                @else { Introduce un correo válido. }
+              </small>
+            }
+          </div>
+
+          <div class="field">
+            <label for="company">Nombre de tu empresa</label>
+            <input id="company" type="text" formControlName="company"
+                   placeholder="Tu empresa S.L." autocomplete="organization"
+                   [attr.aria-invalid]="form.controls.company.invalid && form.controls.company.touched"
+                   aria-describedby="company-error" />
+            @if (form.controls.company.touched && form.controls.company.invalid) {
+              <small id="company-error" class="field__error">Indica el nombre de tu empresa.</small>
+            }
+          </div>
+
+          <div class="field">
+            <label for="password">Contraseña</label>
+            <input id="password" type="password" formControlName="password"
+                   placeholder="Mínimo 8 caracteres" autocomplete="new-password"
+                   [attr.aria-invalid]="form.controls.password.invalid && form.controls.password.touched"
+                   aria-describedby="password-hint password-error" />
+            <small id="password-hint" class="field__hint">Mínimo 8 caracteres.</small>
+            @if (form.controls.password.touched && form.controls.password.hasError('minlength')) {
+              <small id="password-error" class="field__error">La contraseña es demasiado corta.</small>
+            }
+          </div>
+
+          <div class="field field--check">
+            <label class="checkbox">
+              <input type="checkbox" formControlName="terms" />
+              <span>Acepto los <a routerLink="/es/terminos">términos de servicio</a>
+                y la <a routerLink="/es/privacidad">política de privacidad</a></span>
+            </label>
+          </div>
+
+          @if (error()) {
+            <p class="signup__error" role="alert">{{ error() }}</p>
+          }
+
+          <button class="btn btn--primary btn--block" type="submit" [disabled]="loading()">
+            {{ loading() ? 'Creando tu cuenta…' : 'Crear mi cuenta gratis' }}
+          </button>
+          <p class="signup__no-card">✓ No se requiere tarjeta de crédito</p>
+        </form>
+      }
+
+      <p class="signup__login">
+        ¿Ya tienes cuenta? <a routerLink="/es/iniciar-sesion">Iniciar sesión</a>
+      </p>
+    </div>
+
+    <!-- ============ COLUMNA BENEFICIOS ============ -->
+    <aside class="signup__panel">
+      <h2>Empieza con NexusChat</h2>
+      <ul class="signup__benefits">
+        <li>
+          <strong>Configura tu cuenta en menos de 3 minutos</strong>
+          <span>Asistencia guiada paso a paso desde el primer acceso.</span>
+        </li>
+        <li>
+          <strong>Instala tu widget gratuito y prueba nuestro chat</strong>
+          <span>El widget sigue siendo gratis aunque no continúes tras la prueba.</span>
+        </li>
+        <li>
+          <strong>Soporte en español 24 horas / 7 días</strong>
+          <span>Equipo humano en Europa y Latinoamérica.</span>
+        </li>
+      </ul>
+
+      <p class="signup__apps-title">También disponible desde móvil y desktop</p>
+      <div class="signup__apps">
+        <span class="app-chip">▶ Android</span>
+        <span class="app-chip">⊞ Windows</span>
+        <span class="app-chip">✦ macOS</span>
+        <span class="app-chip">◍ iOS</span>
+      </div>
+
+      <img class="signup__illustration" src="assets/images/illustration-signup.svg"
+           alt="Personas chateando desde sus móviles con varias apps de mensajería"
+           width="420" height="300" loading="lazy" />
+    </aside>
+  </div>
+</section>

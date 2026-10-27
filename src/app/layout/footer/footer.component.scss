@@ -1,0 +1,70 @@
+/** Footer sobre azul marino con acentos dorados */
+.footer {
+  background: var(--navy-950);
+  color: rgba(247, 244, 238, 0.75);
+  padding: 72px 0 32px;
+  font-size: 14.5px;
+
+  &__grid {
+    display: grid;
+    gap: 40px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(247, 244, 238, 0.1);
+
+    @media (min-width: 860px) {
+      grid-template-columns: 1.4fr repeat(3, 1fr);
+    }
+  }
+
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--ivory);
+    margin-bottom: 14px;
+
+    em { font-style: normal; color: var(--gold-400); }
+  }
+
+  h3 {
+    color: var(--ivory);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  nav a {
+    display: block;
+    padding: 5px 0;
+    transition: color 0.15s ease;
+
+    &:hover { color: var(--gold-400); }
+  }
+
+  &__badge {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 14px;
+    border: 1px solid rgba(201, 169, 110, 0.5);
+    border-radius: 999px;
+    color: var(--gold-400);
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+
+  &__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+    padding-top: 28px;
+    font-size: 13px;
+    color: rgba(247, 244, 238, 0.5);
+
+    p { margin: 0; }
+  }
+}

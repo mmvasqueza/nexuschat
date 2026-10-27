@@ -1,0 +1,197 @@
+<!--
+  HOME - LANDING PRINCIPAL
+  Cada <section> usa la directiva appReveal para animar su entrada.
+  El copy es original y adaptado al modelo de negocio de referencia.
+-->
+
+<!-- ===================== 1. HERO ===================== -->
+<section class="hero">
+  <div class="container hero__grid">
+    <div class="hero__copy" appReveal>
+      <span class="hero__badge">WhatsApp Business Partner</span>
+      <h1>
+        CRM con IA para <span class="hero__highlight">WhatsApp</span> y
+        tus canales de chat
+      </h1>
+      <p class="hero__lead">
+        Vende, responde y automatiza desde una sola plataforma multiagente:
+        bandeja multicanal, agentes de IA, chatbot, campañas masivas y
+        métricas en tiempo real.
+      </p>
+      <div class="hero__ctas">
+        <a class="btn btn--primary" routerLink="/es/crea-una-cuenta-gratuita">
+          Crear cuenta gratuita
+        </a>
+        <a class="btn btn--ghost-light" routerLink="/es/demo">Programar una demo</a>
+      </div>
+      <p class="hero__note">✓ Sin tarjeta de crédito &nbsp;·&nbsp; ✓ Configuración en menos de 3 minutos</p>
+    </div>
+
+    <div class="hero__visual" appReveal>
+      <!-- Mockup SVG original del dashboard (paleta corporativa) -->
+      <img src="assets/images/hero-dashboard.svg"
+           alt="Panel de NexusChat con conversaciones de WhatsApp, Instagram y Messenger"
+           width="760" height="560" fetchpriority="high" />
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 2. SUITE DE MÓDULOS ===================== -->
+<section class="section" id="suite">
+  <div class="container">
+    <header class="section__head" appReveal>
+      <span class="eyebrow">Suite CRM</span>
+      <h2>Descubre la suite para hacer crecer tu negocio gracias a la mensajería</h2>
+    </header>
+
+    <div class="grid grid--2">
+      @for (m of modules; track m.title) {
+        <article class="card module-card" appReveal>
+          <div class="module-card__media">
+            <img [src]="m.image" [alt]="m.title" width="440" height="300" loading="lazy" />
+          </div>
+          <div class="module-card__body">
+            <h3><span aria-hidden="true">{{ m.icon }}</span> {{ m.title }}</h3>
+            <p>{{ m.description }}</p>
+            <a class="module-card__link" [routerLink]="m.link">
+              Saber más <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 3. CENTRALIZACIÓN DE CANALES ===================== -->
+<section class="section section--dark">
+  <div class="container split">
+    <div class="split__media" appReveal>
+      <img src="assets/images/illustration-team.svg"
+           alt="Equipo de agentes gestionando todos los canales desde un panel único"
+           width="520" height="420" loading="lazy" />
+    </div>
+    <div class="split__copy" appReveal>
+      <span class="eyebrow">Una sola bandeja</span>
+      <h2>Centraliza tus canales de mensajería</h2>
+      <p>
+        Invita a tus agentes y atiende a tus clientes en WhatsApp Business,
+        Messenger, Instagram, Telegram y TikTok desde una única plataforma
+        colaborativa, también desde la app móvil.
+      </p>
+      <div class="channel-badges" role="list">
+        @for (ch of channels; track ch) {
+          <span class="channel-badges__item" role="listitem">{{ ch }}</span>
+        }
+      </div>
+      <a class="btn btn--primary" routerLink="/es/funcionalidades/chat">Ver el módulo de chat</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 4. ENRUTAMIENTO POR DEPARTAMENTOS ===================== -->
+<section class="section">
+  <div class="container split split--reverse">
+    <div class="split__media" appReveal>
+      <img src="assets/images/illustration-routing.svg"
+           alt="Enrutamiento automático de chats a ventas, soporte y facturación"
+           width="520" height="420" loading="lazy" />
+    </div>
+    <div class="split__copy" appReveal>
+      <span class="eyebrow">Auto-routing</span>
+      <h2>Cada chat al departamento correspondiente</h2>
+      <p>
+        Organiza tu equipo según sus funciones para que cada cliente hable
+        con la persona correcta desde el primer mensaje, gracias al
+        enrutamiento automático por palabras clave, idioma o canal.
+      </p>
+      <ul class="check-list">
+        <li>Reglas de asignación por departamento o agente</li>
+        <li>Transferencia de chat con contexto completo</li>
+        <li>Menciones internas y notas privadas por conversación</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 5. ESTADÍSTICAS ===================== -->
+<section class="section section--dark" id="stats">
+  <div class="container">
+    <header class="section__head" appReveal>
+      <span class="eyebrow">Datos en vivo</span>
+      <h2>Analiza y controla las estadísticas</h2>
+      <p class="section__sub">
+        Utiliza las métricas para analizar el desempeño de tu equipo,
+        estudiar la mejor estrategia y mantener el control de todas
+        las comunicaciones.
+      </p>
+    </header>
+
+    <div class="grid grid--4 stats-grid">
+      @for (s of stats(); track s.label; let i = $index) {
+        <div class="stat" appReveal>
+          <p class="stat__value">
+            {{ animatedStats()[i] }}<span class="stat__suffix">{{ s.suffix }}</span>
+          </p>
+          <p class="stat__label">{{ s.label }}</p>
+        </div>
+      }
+    </div>
+
+    <div class="stats-chart" appReveal>
+      <img src="assets/images/illustration-stats.svg"
+           alt="Gráfico de métricas de conversaciones resueltas y tiempo de respuesta"
+           width="960" height="340" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 6. TESTIMONIOS ===================== -->
+<section class="section">
+  <div class="container">
+    <header class="section__head" appReveal>
+      <span class="eyebrow">Clientes</span>
+      <h2>Más de 1000 empresas ya centralizan su atención con NexusChat</h2>
+    </header>
+
+    <div class="grid grid--3">
+      @for (t of testimonials; track t.name) {
+        <figure class="card testimonial" appReveal>
+          <blockquote>“{{ t.quote }}”</blockquote>
+          <figcaption>
+            <strong>{{ t.name }}</strong>
+            <span>{{ t.role }}</span>
+          </figcaption>
+        </figure>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 7. FAQ ===================== -->
+<section class="section section--tinted">
+  <div class="container container--narrow">
+    <header class="section__head" appReveal>
+      <span class="eyebrow">Dudas frecuentes</span>
+      <h2>Preguntas frecuentes</h2>
+    </header>
+    <app-faq-accordion [items]="faqItems" />
+    <p class="faq-more" appReveal>
+      ¿Tienes más preguntas?
+      <a routerLink="/es/preguntas-frecuentes">Ver todas las preguntas frecuentes</a>
+      o <a routerLink="/es/demo">regístrate al webinar semanal</a>.
+    </p>
+  </div>
+</section>
+
+<!-- ===================== 8. CTA FINAL ===================== -->
+<section class="section cta-final">
+  <div class="container cta-final__box" appReveal>
+    <h2>Empieza hoy. Sin tarjeta de crédito.</h2>
+    <p>Configura tu cuenta en menos de 3 minutos e instala el widget gratuito.</p>
+    <div class="cta-final__actions">
+      <a class="btn btn--primary" routerLink="/es/crea-una-cuenta-gratuita">Crear cuenta gratuita</a>
+      <a class="btn btn--outline" routerLink="/es/precios">Ver precios</a>
+    </div>
+  </div>
+</section>

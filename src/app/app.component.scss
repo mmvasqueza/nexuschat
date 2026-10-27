@@ -1,0 +1,10 @@
+/** Estilos del contenedor raíz */
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+/* El contenido principal deja aire bajo el header fijo */
+#main-content {
+  min-height: 60vh;
+}

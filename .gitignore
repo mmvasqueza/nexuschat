@@ -1,0 +1,20 @@
+# Node
+node_modules/
+dist/
+.angular/
+*.log
+
+# .NET
+bin/
+obj/
+*.user
+
+# IDEs
+.vs/
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Sistema
+.DS_Store
+Thumbs.db

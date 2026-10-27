@@ -1,0 +1,83 @@
+<!--
+  NAVBAR
+  - header.fixed: fija con blur; la clase .scrolled la activa el scroll.
+  - routerLinkActive="active": marca el enlace de la ruta actual.
+  - Todos los botones tienen aria-label/aria-expanded para lectores de pantalla.
+-->
+<header class="navbar" [class.scrolled]="scrolled()">
+  <div class="container navbar__inner">
+    <!-- LOGO: marca propia con el isotipo SVG corporativo -->
+    <a class="navbar__brand" routerLink="/es" (click)="closeAll()" aria-label="NexusChat - Inicio">
+      <img src="assets/images/logo.svg" alt="NexusChat" width="34" height="34" />
+      <span class="navbar__name">Nexus<em>Chat</em></span>
+    </a>
+
+    <!-- MENÚ ESCRITORIO -->
+    <nav class="navbar__menu" aria-label="Navegación principal">
+      @for (item of navItems; track item.label) {
+        @if (item.children) {
+          <!-- Dropdown de Funcionalidades: se abre con hover (CSS) o foco (teclado) -->
+          <div class="navbar__dropdown"
+               (mouseenter)="featuresOpen.set(true)"
+               (mouseleave)="featuresOpen.set(false)">
+            <button class="navbar__link" type="button"
+                    [attr.aria-expanded]="featuresOpen()"
+                    (click)="featuresOpen.set(!featuresOpen())">
+              {{ item.label }}
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </button>
+            @if (featuresOpen()) {
+              <div class="navbar__panel" role="menu">
+                @for (child of item.children; track child.link) {
+                  <a role="menuitem" class="navbar__panel-link" [routerLink]="child.link"
+                     routerLinkActive="active" (click)="closeAll()">{{ child.label }}</a>
+                }
+              </div>
+            }
+          </div>
+        } @else {
+          <a class="navbar__link" [routerLink]="item.link"
+             routerLinkActive="active" (click)="closeAll()">{{ item.label }}</a>
+        }
+      }
+    </nav>
+
+    <!-- ACCIONES: cambian según el estado de sesión (AuthService) -->
+    <div class="navbar__actions">
+      @if (auth.isLoggedIn()) {
+        <a class="btn btn--primary btn--sm" href="#" (click)="$event.preventDefault()">Ir a la app</a>
+      } @else {
+        <a class="navbar__login" routerLink="/es/iniciar-sesion">Iniciar sesión</a>
+        <a class="btn btn--primary btn--sm" routerLink="/es/crea-una-cuenta-gratuita">Crear cuenta gratis</a>
+      }
+
+      <!-- Hamburguesa (solo móvil) -->
+      <button class="navbar__burger" type="button" aria-label="Abrir menú"
+              [attr.aria-expanded]="mobileOpen()" (click)="toggleMobile()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- PANEL MÓVIL: lista completa, cierra al navegar -->
+  @if (mobileOpen()) {
+    <nav class="navbar__mobile" aria-label="Menú móvil">
+      @for (item of navItems; track item.label) {
+        @if (item.children) {
+          <p class="navbar__mobile-group">{{ item.label }}</p>
+          @for (child of item.children; track child.link) {
+            <a [routerLink]="child.link" (click)="closeAll()">{{ child.label }}</a>
+          }
+        } @else {
+          <a [routerLink]="item.link" (click)="closeAll()">{{ item.label }}</a>
+        }
+      }
+      <div class="navbar__mobile-actions">
+        <a class="btn btn--outline" routerLink="/es/iniciar-sesion" (click)="closeAll()">Iniciar sesión</a>
+        <a class="btn btn--primary" routerLink="/es/crea-una-cuenta-gratuita" (click)="closeAll()">Crear cuenta gratis</a>
+      </div>
+    </nav>
+  }
+</header>

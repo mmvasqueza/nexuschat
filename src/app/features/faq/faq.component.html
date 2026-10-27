@@ -1,0 +1,16 @@
+<section class="faq-page">
+  <div class="container container--narrow">
+    <header class="faq-page__head" appReveal>
+      <span class="eyebrow">Centro de ayuda</span>
+      <h1>Preguntas frecuentes</h1>
+      <p>¿Tienes dudas? Aquí respondemos las más comunes. Si necesitas más, <a routerLink="/es/demo">agenda una demo</a> o escríbenos.</p>
+    </header>
+
+    @for (cat of categories; track cat.title) {
+      <section class="faq-page__category" appReveal>
+        <h2>{{ cat.title }}</h2>
+        <app-faq-accordion [items]="cat.items" />
+      </section>
+    }
+  </div>
+</section>

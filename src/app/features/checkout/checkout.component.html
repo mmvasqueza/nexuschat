@@ -1,0 +1,52 @@
+<!--
+  CHECKOUT
+  Resumen del pedido + botón que redirige a la pasarela Stripe hospedada.
+-->
+<section class="checkout">
+  <div class="checkout__card">
+    @if (!plan()) {
+      <!-- planId de la URL no existe en el catálogo -->
+      <h1>Plan no encontrado</h1>
+      <p>El plan que buscas no existe o ya no está disponible.</p>
+      <a class="btn btn--primary" routerLink="/es/precios">Ver planes disponibles</a>
+    } @else if (isEnterprise()) {
+      <!-- Enterprise se cierra comercialmente, no por self-service -->
+      <h1>Plan {{ plan()!.name }}</h1>
+      <p class="checkout__lead">
+        El plan Enterprise se construye a medida de tus necesidades.
+        Agenda una llamada con nuestro equipo comercial.
+      </p>
+      <a class="btn btn--primary btn--block" routerLink="/es/demo">Agendar llamada comercial</a>
+    } @else {
+      <h1>Finalizar suscripción</h1>
+      <p class="checkout__lead">Revisa tu pedido y continúa al pago seguro.</p>
+
+      <dl class="checkout__summary">
+        <div><dt>Plan</dt><dd>{{ plan()!.name }}</dd></div>
+        <div><dt>Agentes</dt><dd>{{ pricing.agents() }}</dd></div>
+        <div><dt>Precio por agente</dt><dd>${{ plan()!.pricePerAgent }} / mes</dd></div>
+        <div class="checkout__total"><dt>Total mensual estimado</dt><dd>${{ total() }}</dd></div>
+      </dl>
+
+      <p class="checkout__secure">🔒 Pago procesado por Stripe · PCI-DSS Nivel 1</p>
+
+      @if (error()) {
+        <p class="checkout__error" role="alert">{{ error() }}</p>
+      }
+
+      <button class="btn btn--primary btn--block" type="button"
+              [disabled]="status() === 'processing'"
+              (click)="confirmPayment()">
+        {{ status() === 'processing' ? 'Redirigiendo a la pasarela…' : 'Pagar con tarjeta' }}
+      </button>
+
+      <a class="checkout__back" routerLink="/es/precios">← Modificar mi selección</a>
+
+      <p class="checkout__note">
+        Al pagar aceptas los <a routerLink="/es/terminos">términos de servicio</a>.
+        El cargo se realiza de forma segura en Stripe; NexusChat nunca almacena
+        los datos de tu tarjeta.
+      </p>
+    }
+  </div>
+</section>

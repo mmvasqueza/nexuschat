@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" width="440" height="300" role="img" aria-label="API y Webhooks">
+  <rect width="440" height="300" rx="18" fill="#10233F"/>
+  <circle cx="70" cy="260" r="100" fill="#C9A96E" opacity=".08"/>
+  <!-- Pila de bloques API -->
+  <g>
+    <rect x="150" y="200" width="140" height="42" rx="12" fill="#060E1C" stroke="#1F4068" stroke-width="1.6"/>
+    <rect x="160" y="152" width="120" height="42" rx="12" fill="#16304F" stroke="#C9A96E" stroke-width="1.4"/>
+    <rect x="150" y="104" width="140" height="42" rx="12" fill="#C9A96E"/>
+    <text x="196" y="131" font-family="Sora,sans-serif" font-size="17" font-weight="800" fill="#0A1628">API</text>
+  </g>
+  <!-- Conectores laterales -->
+  <g stroke="#DDC08A" stroke-width="1.6" stroke-dasharray="4 5" fill="none">
+    <path d="M150 223 H96 a14 14 0 0 1 -14-14 v-20"/>
+    <path d="M290 223 H344 a14 14 0 0 0 14-14 v-20"/>
+  </g>
+  <rect x="40" y="140" width="88" height="46" rx="10" fill="#060E1C" stroke="#C9A96E" stroke-width="1.6"/>
+  <text x="58" y="167" font-family="Inter,sans-serif" font-size="11" fill="#F7F4EE">CRM / ERP</text>
+  <rect x="312" y="140" width="88" height="46" rx="10" fill="#060E1C" stroke="#C9A96E" stroke-width="1.6"/>
+  <text x="334" y="167" font-family="Inter,sans-serif" font-size="11" fill="#F7F4EE">Webhooks</text>
+  <!-- Símbolo webhook -->
+  <circle cx="356" cy="106" r="16" fill="#C9A96E" opacity=".9"/>
+  <path d="M349 106h14M356 99l7 7-7 7" stroke="#0A1628" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+</svg>

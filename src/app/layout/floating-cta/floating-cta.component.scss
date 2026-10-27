@@ -1,0 +1,73 @@
+/** FAB dorado fijo, esquina inferior derecha */
+.fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+
+  &__button {
+    width: 58px;
+    height: 58px;
+    border: 0;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, var(--gold-400), var(--gold-500));
+    color: var(--navy-950);
+    cursor: pointer;
+    box-shadow: var(--shadow-gold);
+    transition: transform 0.18s ease;
+
+    &:hover { transform: scale(1.06); }
+  }
+
+  &__panel {
+    width: 260px;
+    padding: 20px;
+    background: #fff;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lift);
+    border: 1px solid var(--line);
+    animation: fabIn 0.22s ease;
+  }
+
+  &__title { margin: 0 0 4px; font-family: var(--font-display); font-weight: 700; color: var(--navy-900); }
+  &__text { margin: 0 0 14px; font-size: 13.5px; color: var(--ink-soft); }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    background: var(--sand-100);
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--navy-900);
+
+    &:hover { background: var(--sand-200); }
+  }
+
+  &__icon {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--navy-900);
+    color: var(--gold-400);
+    font-size: 14px;
+
+    &--wa { background: #22c55e; color: #fff; }
+  }
+}
+
+@keyframes fabIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}

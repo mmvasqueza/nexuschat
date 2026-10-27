@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="NexusChat">
+  <!-- Isotipo: burbuja de chat + campana estilizada (nexus + bell) -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#0A1628"/>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="none" stroke="#C9A96E" stroke-width="2.5"/>
+  <!-- Campana -->
+  <path d="M32 14c-7.7 0-12 5.6-12 12.4 0 6.5-1.6 9.6-3.4 11.6-.7.8 0 2 1.1 2h28.6c1.1 0 1.8-1.2 1.1-2-1.8-2-3.4-5.1-3.4-11.6C44 19.6 39.7 14 32 14Z" fill="#C9A96E"/>
+  <!-- Badaje (punto) de la campana -->
+  <circle cx="32" cy="47" r="4" fill="#DDC08A"/>
+  <!-- Onda sonora / mensaje -->
+  <path d="M18 26a16 16 0 0 1 0 8M46 26a16 16 0 0 0 0 8" stroke="#DDC08A" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+</svg>

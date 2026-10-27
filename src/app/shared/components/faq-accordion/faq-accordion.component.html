@@ -1,0 +1,20 @@
+<div class="faq">
+  @for (item of items; track item.question; let i = $index) {
+    <div class="faq__item" [class.faq__item--open]="openIndex() === i">
+      <!-- Botón accesible: aria-expanded comunica el estado al lector -->
+      <button class="faq__question" type="button"
+              [attr.aria-expanded]="openIndex() === i"
+              (click)="toggle(i)">
+        <span>{{ item.question }}</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <!-- Contenido animado con altura automática (grid-template-rows trick) -->
+      <div class="faq__answer" role="region">
+        <p>{{ item.answer }}</p>
+      </div>
+    </div>
+  }
+</div>

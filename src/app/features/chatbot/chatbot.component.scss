@@ -1,0 +1,100 @@
+/** ============ PÁGINA DE FUNCIONALIDAD ============ */
+
+/* Banda hero interna (más compacta que la home) */
+.feature-hero {
+  padding: calc(var(--header-height) + 64px) 0 72px;
+  background:
+    radial-gradient(900px 420px at 80% -10%, rgba(201, 169, 110, 0.2), transparent 60%),
+    linear-gradient(160deg, var(--navy-950), var(--navy-800));
+  color: var(--ivory);
+  text-align: center;
+
+  h1 {
+    color: var(--ivory);
+    font-size: clamp(2rem, 4.2vw, 3rem);
+    max-width: 20ch;
+    margin-inline: auto;
+  }
+
+  &__lead {
+    max-width: 62ch;
+    margin: 18px auto 30px;
+    font-size: 17.5px;
+    color: rgba(247, 244, 238, 0.8);
+  }
+
+  &__ctas { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+
+  &__media {
+    max-width: 880px;
+    margin: 56px auto 0;
+
+    img { filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.45)); }
+  }
+}
+
+/* Lista de capacidades con checks */
+.features-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+
+  li {
+    position: relative;
+    padding-left: 34px;
+    font-weight: 500;
+    color: var(--ink);
+
+    &::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--gold-500);
+      color: var(--navy-950);
+      font-size: 12px;
+      font-weight: 800;
+    }
+  }
+}
+
+/* Tarjetas de beneficios */
+.benefit-card {
+  padding: 30px;
+
+  &__icon {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 18px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--navy-800), var(--navy-600));
+    font-size: 24px;
+  }
+
+  h3 { font-size: 18px; }
+  p { color: var(--ink-soft); font-size: 15px; margin: 0; }
+}
+
+/* CTA inferior reutilizado */
+.bottom-cta {
+  text-align: center;
+
+  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+  p { color: var(--ink-soft); margin-bottom: 26px; }
+
+  &__actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+}
+
+.section--tinted { background: var(--sand-100); }
+
+.split { display: grid; gap: 48px; align-items: center; }
+@media (min-width: 920px) { .split { grid-template-columns: 1fr 1fr; } }
+.split__copy h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); }

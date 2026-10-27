@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" width="960" height="340" role="img" aria-label="Métricas en tiempo real">
+  <rect width="960" height="340" rx="22" fill="#060E1C" stroke="#1F4068"/>
+  <text x="48" y="52" font-family="Sora,sans-serif" font-size="16" font-weight="700" fill="#F7F4EE">Panel de métricas en tiempo real</text>
+  <!-- KPIs superiores -->
+  <g>
+    <rect x="48" y="72" width="200" height="70" rx="14" fill="#10233F"/>
+    <text x="68" y="100" font-family="Inter,sans-serif" font-size="12" fill="#DDC08A">Conversaciones resueltas</text>
+    <text x="68" y="126" font-family="Sora,sans-serif" font-size="24" font-weight="800" fill="#F7F4EE">12,480</text>
+    <rect x="272" y="72" width="200" height="70" rx="14" fill="#10233F"/>
+    <text x="292" y="100" font-family="Inter,sans-serif" font-size="12" fill="#DDC08A">Tiempo de respuesta medio</text>
+    <text x="292" y="126" font-family="Sora,sans-serif" font-size="24" font-weight="800" fill="#F7F4EE">1m 42s</text>
+    <rect x="496" y="72" width="200" height="70" rx="14" fill="#10233F"/>
+    <text x="516" y="100" font-family="Inter,sans-serif" font-size="12" fill="#DDC08A">CSAT</text>
+    <text x="516" y="126" font-family="Sora,sans-serif" font-size="24" font-weight="800" fill="#DDC08A">98%</text>
+  </g>
+  <!-- Gráfico de barras -->
+  <g>
+    <!-- rejilla -->
+    <g stroke="#16304F" stroke-width="1">
+      <line x1="60" y1="300" x2="920" y2="300"/><line x1="60" y1="250" x2="920" y2="250"/>
+      <line x1="60" y1="200" x2="920" y2="200"/><line x1="60" y1="170" x2="920" y2="170" opacity=".4"/>
+    </g>
+    <g fill="#C9A96E">
+      <rect x="90"  y="240" width="46" height="60" rx="6"/>
+      <rect x="170" y="222" width="46" height="78" rx="6"/>
+      <rect x="250" y="250" width="46" height="50" rx="6"/>
+      <rect x="330" y="204" width="46" height="96" rx="6"/>
+      <rect x="410" y="188" width="46" height="112" rx="6" fill="#DDC08A"/>
+      <rect x="490" y="214" width="46" height="86" rx="6"/>
+      <rect x="570" y="180" width="46" height="120" rx="6" fill="#DDC08A"/>
+      <rect x="650" y="196" width="46" height="104" rx="6"/>
+      <rect x="730" y="170" width="46" height="130" rx="6" fill="#DDC08A"/>
+    </g>
+    <!-- línea de tendencia -->
+    <path d="M113 226 193 208 273 236 353 190 433 174 513 200 593 166 673 182 753 156" stroke="#F7F4EE" stroke-width="2" fill="none" opacity=".85" stroke-dasharray="1 6" stroke-linecap="round"/>
+  </g>
+</svg>

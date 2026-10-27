@@ -1,0 +1,185 @@
+/** Navbar fija con efecto glass sobre fondos claros y oscuros */
+.navbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+
+  /* Estado inicial: transparente (el hero es oscuro) */
+  color: var(--ivory);
+
+  /* Al hacer scroll: fondo marino sólido con sombra premium */
+  &.scrolled {
+    background: rgba(10, 22, 40, 0.92);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 10px 30px rgba(6, 14, 28, 0.35);
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    width: min(100% - 48px, 1280px);
+    margin-inline: auto;
+  }
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+
+    em { font-style: normal; color: var(--gold-400); }
+  }
+
+  &__menu {
+    display: none;
+    align-items: center;
+    gap: 6px;
+
+    @media (min-width: 960px) { display: flex; }
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    font-size: 14.5px;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease;
+
+    &:hover { background: rgba(247, 244, 238, 0.08); }
+
+    /* Estado activo: subrayado dorado de 2px (routerLinkActive) */
+    &.active { color: var(--gold-400); }
+  }
+
+  /* Dropdown de Funcionalidades */
+  &__dropdown { position: relative; }
+
+  &__panel {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    min-width: 240px;
+    padding: 10px;
+    background: #fff;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lift);
+    display: grid;
+    gap: 2px;
+
+    &-link {
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      color: var(--ink);
+      font-size: 14.5px;
+      font-weight: 500;
+
+      &:hover { background: var(--sand-100); color: var(--navy-900); }
+      &.active { color: var(--gold-600); background: var(--sand-100); }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__login {
+    font-size: 14.5px;
+    font-weight: 500;
+    opacity: 0.9;
+
+    &:hover { opacity: 1; text-decoration: underline; }
+  }
+
+  /* Botón pequeño para la barra (variante del .btn global) */
+  :host ::ng-deep .btn--sm { padding: 10px 20px; font-size: 14px; }
+
+  /* Hamburguesa */
+  &__burger {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+
+    span {
+      width: 22px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+    }
+
+    @media (min-width: 960px) { display: none; }
+  }
+
+  /* Panel móvil a pantalla completa */
+  &__mobile {
+    position: fixed;
+    inset: var(--header-height) 0 0 0;
+    background: var(--navy-900);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow-y: auto;
+
+    a {
+      padding: 14px 12px;
+      border-radius: var(--radius-sm);
+      color: var(--ivory);
+      font-size: 17px;
+      font-weight: 600;
+
+      &:hover { background: rgba(247, 244, 238, 0.07); }
+    }
+
+    &-group {
+      margin: 18px 12px 4px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-400);
+    }
+
+    &-actions {
+      margin-top: auto;
+      display: grid;
+      gap: 12px;
+      padding-top: 24px;
+
+      /* El botón outline claro sobre fondo oscuro */
+      .btn--outline {
+        border-color: rgba(247, 244, 238, 0.4);
+        color: var(--ivory);
+
+        &:hover { background: rgba(247, 244, 238, 0.1); }
+      }
+    }
+  }
+}
+
+/* En pantallas pequeñas ocultamos login inline (está en el panel móvil) */
+@media (max-width: 959px) {
+  .navbar__login { display: none; }
+}

@@ -1,0 +1,194 @@
+/** ============ CREA UNA CUENTA GRATUITA ============ */
+.signup {
+  min-height: 100vh;
+  padding: calc(var(--header-height) + 48px) 0 80px;
+  background:
+    radial-gradient(800px 400px at 100% 0%, rgba(201, 169, 110, 0.14), transparent 60%),
+    var(--ivory);
+
+  &__grid {
+    display: grid;
+    gap: 48px;
+
+    @media (min-width: 980px) { grid-template-columns: 1.1fr 1fr; align-items: start; }
+  }
+
+  &__back {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: var(--ink-soft);
+
+    &:hover { color: var(--navy-900); }
+  }
+
+  h1 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+  &__sub { color: var(--ink-soft); margin-bottom: 28px; max-width: 46ch; }
+
+  /* Botones sociales */
+  &__social { display: grid; gap: 10px; }
+
+  &__divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 22px 0;
+    color: var(--ink-soft);
+    font-size: 13px;
+
+    &::before, &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+  }
+
+  /* Campos */
+  .field { margin-bottom: 18px; display: grid; gap: 6px; }
+
+  .field label {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--navy-900);
+  }
+
+  .field input[type='email'],
+  .field input[type='text'],
+  .field input[type='password'] {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-sm);
+    font: inherit;
+    background: #fff;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+    &:focus {
+      outline: none;
+      border-color: var(--gold-500);
+      box-shadow: 0 0 0 4px rgba(201, 169, 110, 0.2);
+    }
+
+    &[aria-invalid='true'] { border-color: #c0392b; }
+  }
+
+  .field__error { color: #c0392b; font-size: 13px; }
+  .field__hint { color: var(--ink-soft); font-size: 12.5px; }
+
+  .field--check .checkbox {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--ink-soft);
+
+    a { color: var(--gold-600); font-weight: 600; }
+    input { margin-top: 3px; accent-color: var(--gold-600); }
+  }
+
+  .btn--block { width: 100%; }
+
+  .btn[disabled] { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  &__error {
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    background: #fdecea;
+    color: #a93226;
+    font-size: 14px;
+  }
+
+  &__no-card {
+    text-align: center;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  /* Estado de éxito */
+  &__success {
+    padding: 28px;
+    border-radius: var(--radius-md);
+    background: #eafaf1;
+    border: 1px solid #b7e4c7;
+
+    strong { color: #1e8449; display: block; margin-bottom: 8px; }
+    p { color: #145a32; margin-bottom: 18px; }
+  }
+
+  &__login {
+    margin-top: 26px;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+
+    a { color: var(--gold-600); font-weight: 700; }
+  }
+
+  /* Panel de beneficios (oscuro, premium) */
+  &__panel {
+    padding: 40px 36px;
+    border-radius: var(--radius-lg);
+    background:
+      radial-gradient(500px 260px at 100% 0%, rgba(201, 169, 110, 0.18), transparent 65%),
+      linear-gradient(160deg, var(--navy-900), var(--navy-700));
+    color: var(--ivory);
+
+    h2 { color: var(--ivory); font-size: 24px; margin-bottom: 24px; }
+  }
+
+  &__benefits {
+    list-style: none;
+    margin: 0 0 30px;
+    padding: 0;
+    display: grid;
+    gap: 20px;
+
+    li {
+      padding-left: 34px;
+      position: relative;
+
+      /* Check dorado */
+      &::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        top: 2px;
+        width: 22px;
+        height: 22px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--gold-500);
+        color: var(--navy-950);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      strong { display: block; font-size: 15px; }
+      span { font-size: 13.5px; color: rgba(247, 244, 238, 0.7); }
+    }
+  }
+
+  &__apps-title {
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gold-400);
+    margin-bottom: 12px;
+  }
+
+  &__apps { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
+
+  .app-chip {
+    padding: 9px 16px;
+    border: 1px solid rgba(247, 244, 238, 0.25);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ivory);
+  }
+
+  &__illustration { margin-inline: auto; }
+}

@@ -1,0 +1,49 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <!-- Marca + propuesta de valor -->
+      <div class="footer__brand">
+        <a class="footer__logo" routerLink="/es">
+          <img src="assets/images/logo.svg" alt="" width="30" height="30" />
+          <span>Nexus<em>Chat</em></span>
+        </a>
+        <p>
+          Plataforma multiagente para vender y dar soporte por WhatsApp,
+          Messenger, Instagram, Telegram y TikTok desde un único panel.
+        </p>
+        <p class="footer__badge">WhatsApp Business Partner</p>
+      </div>
+
+      <!-- Columna Producto -->
+      <nav aria-label="Producto">
+        <h3>Producto</h3>
+        <a routerLink="/es/precios">Precios y planes</a>
+        <a routerLink="/es/crea-una-cuenta-gratuita">Cuenta gratuita</a>
+        <a routerLink="/es/demo">Solicitar demo</a>
+        <a routerLink="/es/preguntas-frecuentes">Preguntas frecuentes</a>
+      </nav>
+
+      <!-- Columna Funcionalidades -->
+      <nav aria-label="Funcionalidades">
+        <h3>Funcionalidades</h3>
+        <a routerLink="/es/funcionalidades/chat">Bandeja multicanal</a>
+        <a routerLink="/es/funcionalidades/chatbot">Chatbot con IA</a>
+        <a routerLink="/es/funcionalidades/broadcast">Campañas masivas</a>
+        <a routerLink="/es/funcionalidades/api">API &amp; Webhooks</a>
+      </nav>
+
+      <!-- Columna Legal -->
+      <nav aria-label="Legal">
+        <h3>Empresa</h3>
+        <a routerLink="/es/privacidad">Política de privacidad</a>
+        <a routerLink="/es/terminos">Términos de servicio</a>
+        <a href="mailto:hola@nexuschat.example">hola@nexuschat.example</a>
+      </nav>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© {{ year }} NexusChat. Todos los derechos reservados. Proyecto demostrativo.</p>
+      <p class="footer__lang">Español (ES) · English (EN) · Italiano (IT)</p>
+    </div>
+  </div>
+</footer>

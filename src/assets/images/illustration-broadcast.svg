@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" width="440" height="300" role="img" aria-label="Campañas masivas">
+  <rect width="440" height="300" rx="18" fill="#10233F"/>
+  <circle cx="220" cy="150" r="120" fill="#C9A96E" opacity=".07"/>
+  <!-- Antena -->
+  <g transform="translate(220 150)">
+    <ellipse cx="0" cy="30" rx="46" ry="30" fill="#060E1C" stroke="#C9A96E" stroke-width="2"/>
+    <ellipse cx="0" cy="18" rx="30" ry="20" fill="#16304F" stroke="#DDC08A" stroke-width="1.6"/>
+    <ellipse cx="0" cy="6" rx="15" ry="10" fill="#C9A96E"/>
+    <line x1="0" y1="-8" x2="0" y2="-34" stroke="#DDC08A" stroke-width="3"/>
+    <circle cx="0" cy="-40" r="6" fill="#DDC08A"/>
+    <!-- Ondas -->
+    <path d="M-60 -30a74 74 0 0 0 120 0" stroke="#DDC08A" stroke-width="2" fill="none" opacity=".8" stroke-dasharray="5 6"/>
+    <path d="M-78 -44a100 100 0 0 0 156 0" stroke="#DDC08A" stroke-width="2" fill="none" opacity=".45" stroke-dasharray="5 7"/>
+  </g>
+  <!-- Burbujas de destinatarios -->
+  <g>
+    <circle cx="70" cy="80" r="18" fill="#25D366"/>
+    <circle cx="370" cy="70" r="18" fill="#E1306C"/>
+    <circle cx="90" cy="240" r="18" fill="#1877F2"/>
+    <circle cx="355" cy="235" r="18" fill="#229ED9"/>
+    <circle cx="220" cy="262" r="18" fill="#C9A96E"/>
+  </g>
+  <g stroke="#DDC08A" stroke-width="1.4" stroke-dasharray="3 5" opacity=".7">
+    <line x1="88" y1="86" x2="160" y2="112"/><line x1="352" y1="78" x2="285" y2="110"/>
+    <line x1="106" y1="232" x2="165" y2="205"/><line x1="338" y1="228" x2="278" y2="202"/>
+    <line x1="220" y1="244" x2="220" y2="208"/>
+  </g>
+</svg>

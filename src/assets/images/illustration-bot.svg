@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" width="440" height="300" role="img" aria-label="Chatbot con IA">
+  <rect width="440" height="300" rx="18" fill="#10233F"/>
+  <circle cx="380" cy="50" r="100" fill="#C9A96E" opacity=".08"/>
+  <!-- Bot -->
+  <rect x="160" y="70" width="120" height="104" rx="26" fill="#060E1C" stroke="#C9A96E" stroke-width="2"/>
+  <rect x="160" y="96" width="120" height="52" rx="10" fill="#16304F"/>
+  <!-- Ojos -->
+  <circle cx="196" cy="122" r="9" fill="#DDC08A"/><circle cx="244" cy="122" r="9" fill="#DDC08A"/>
+  <!-- Sonrisa -->
+  <path d="M202 138c8 8 28 8 36 0" stroke="#DDC08A" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+  <!-- Antena -->
+  <line x1="220" y1="70" x2="220" y2="46" stroke="#C9A96E" stroke-width="3"/>
+  <circle cx="220" cy="40" r="7" fill="#C9A96E"/>
+  <!-- Nodos de flujo (flow builder) -->
+  <g stroke="#DDC08A" stroke-width="1.6" fill="#060E1C">
+    <line x1="160" y1="150" x2="90" y2="200" stroke-dasharray="4 4"/>
+    <line x1="280" y1="150" x2="350" y2="200" stroke-dasharray="4 4"/>
+    <rect x="52" y="196" width="76" height="40" rx="10" stroke="#C9A96E"/>
+    <rect x="312" y="196" width="76" height="40" rx="10" stroke="#C9A96E"/>
+    <line x1="128" y1="216" x2="160" y2="256" stroke-dasharray="4 4"/>
+    <line x1="312" y1="216" x2="280" y2="256" stroke-dasharray="4 4"/>
+    <rect x="122" y="252" width="76" height="40" rx="10" stroke="#C9A96E"/>
+    <rect x="242" y="252" width="76" height="40" rx="10" stroke="#C9A96E"/>
+  </g>
+  <text x="68" y="219" font-family="Inter,sans-serif" font-size="10" fill="#F7F4EE">intención</text>
+  <text x="328" y="219" font-family="Inter,sans-serif" font-size="10" fill="#F7F4EE">respuesta</text>
+  <text x="134" y="275" font-family="Inter,sans-serif" font-size="10" fill="#DDC08A">humano</text>
+  <text x="252" y="275" font-family="Inter,sans-serif" font-size="10" fill="#F7F4EE">cierre</text>
+  <!-- Spark IA -->
+  <path d="M330 92l4 12 12 4-12 4-4 12-4-12-12-4 12-4Z" fill="#DDC08A"/>
+</svg>

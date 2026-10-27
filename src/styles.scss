@@ -1,0 +1,237 @@
+/**
+ * ============================================================
+ * DISEÑO GLOBAL - PALETA CORPORATIVA PREMIUM
+ * ============================================================
+ *
+ * Filosofía de marca:
+ *  - Azul marino profundo (#0A1628): transmite confianza, solidez
+ *    empresarial y tecnología de nivel "enterprise".
+ *  - Dorado champán (#C9A96E): acento premium, usado con moderación
+ *    en CTAs, bordes y detalles para sugerir exclusividad.
+ *  - Marfil (#F7F4EE): fondos claros cálidos, alternativa al blanco
+ *    clínico, da sensación editorial de alto nivel.
+ *
+ * Todos los componentes consumen estos tokens CSS, así que cambiar
+ * la paleta de todo el sitio significa editar SOLO este archivo.
+ * ============================================================
+ */
+
+:root {
+  /* --- Primarios: escala de azul marino --- */
+  --navy-950: #060e1c;
+  --navy-900: #0a1628; /* color principal de marca */
+  --navy-800: #10233f;
+  --navy-700: #16304f;
+  --navy-600: #1f4068;
+
+  /* --- Acento premium: dorado champán --- */
+  --gold-300: #e8d5ae;
+  --gold-400: #ddc08a;
+  --gold-500: #c9a96e; /* acento principal */
+  --gold-600: #ad8c4f;
+
+  /* --- Neutros cálidos --- */
+  --ivory: #f7f4ee;
+  --sand-100: #efe9dd;
+  --sand-200: #e3dac9;
+  --ink: #1c2433;      /* texto principal sobre fondos claros */
+  --ink-soft: #5a6577; /* texto secundario */
+  --line: rgba(16, 35, 63, 0.12);
+
+  /* --- Superficies oscuras --- */
+  --surface-dark: var(--navy-900);
+  --surface-dark-2: var(--navy-800);
+
+  /* --- Tipografía --- */
+  --font-display: 'Sora', 'Inter', sans-serif; /* títulos */
+  --font-body: 'Inter', sans-serif;            /* cuerpo */
+
+  /* --- Radios y sombras premium --- */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --shadow-soft: 0 10px 30px rgba(6, 14, 28, 0.08);
+  --shadow-lift: 0 24px 60px rgba(6, 14, 28, 0.16);
+  --shadow-gold: 0 12px 32px rgba(201, 169, 110, 0.35);
+
+  /* --- Layout --- */
+  --container: 1180px;
+  --header-height: 72px;
+}
+
+/* --- Reset moderno y accesible --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  // Compensación del header fijo para anchors internos
+  scroll-padding-top: calc(var(--header-height) + 16px);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--ivory);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  color: var(--navy-900);
+  margin: 0 0 0.5em;
+}
+
+p { margin: 0 0 1em; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img { max-width: 100%; display: block; }
+
+/* --- Utilidades de layout --- */
+.container {
+  width: min(100% - 48px, var(--container));
+  margin-inline: auto;
+}
+
+.section {
+  padding: clamp(64px, 9vw, 120px) 0;
+}
+
+.section--dark {
+  background: linear-gradient(160deg, var(--navy-950), var(--navy-800));
+  color: var(--ivory);
+}
+
+.section--dark h1,
+.section--dark h2,
+.section--dark h3 { color: var(--ivory); }
+
+/* --- Etiqueta superior de sección (eyebrow) --- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-600);
+  margin-bottom: 14px;
+
+  &::before {
+    content: '';
+    width: 26px;
+    height: 2px;
+    background: var(--gold-500);
+    border-radius: 2px;
+  }
+}
+
+.section--dark .eyebrow { color: var(--gold-400); }
+
+/* --- Botones premium --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+
+  &:hover { transform: translateY(-2px); }
+  &:focus-visible {
+    outline: 3px solid var(--gold-400);
+    outline-offset: 2px;
+  }
+}
+
+/* Botón primario: dorado sobre marino (conversión) */
+.btn--primary {
+  background: linear-gradient(135deg, var(--gold-400), var(--gold-500));
+  color: var(--navy-950);
+  box-shadow: var(--shadow-gold);
+
+  &:hover { box-shadow: 0 18px 42px rgba(201, 169, 110, 0.5); }
+}
+
+/* Botón secundario: contorno sobre fondo claro */
+.btn--outline {
+  border-color: var(--navy-700);
+  color: var(--navy-900);
+  background: transparent;
+
+  &:hover { background: var(--navy-900); color: var(--ivory); }
+}
+
+/* Botón para fondos oscuros */
+.btn--ghost-light {
+  border-color: rgba(247, 244, 238, 0.35);
+  color: var(--ivory);
+  background: transparent;
+
+  &:hover { background: rgba(247, 244, 238, 0.1); }
+}
+
+/* --- Tarjetas --- */
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+/* --- Animación de entrada (se activa con IntersectionObserver en cada página) --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --- Grid genérico --- */
+.grid {
+  display: grid;
+  gap: 28px;
+}
+
+@media (min-width: 768px) {
+  .grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .grid--4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* --- Accesibilidad: respeta usuarios que prefieren menos movimiento --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
